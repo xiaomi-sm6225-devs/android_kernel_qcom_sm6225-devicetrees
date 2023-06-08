@@ -47,8 +47,7 @@
 				<3 COMP_L 0x1>, <3 COMP_R 0x2>,
 				<4 LO 0x1>, <5 DSD_L 0x1>,
 				<5 DSD_R 0x2>,
-					<7 SWRM_TX1_CH1 0x1>, <7 SWRM_TX1_CH2 0x2>;
-				//<7 SWRM_RX_PCM_IN 0xF>;
+				<7 SWRM_RX_PCM_IN 0x3>;
 			qcom,swr-num-dev = <1>;
 			qcom,swr-clock-stop-mode0 = <1>;
 			wsa883x_0221: wsa883x@02170221 {
@@ -73,6 +72,8 @@
 	qcom,audio-routing =
 		"SpkrLeft IN", "AUX_OUT",
 		"TX SWR_INPUT", "VA_TX_SWR_CLK",
+		"RX_SWR_TX_PCM_IN0", "RX_MCLK",
+		"RX_SWR_TX_PCM_IN1", "RX_MCLK",
 		"RX_TX DEC0_INP", "TX DEC0 MUX",
 		"RX_TX DEC1_INP", "TX DEC1 MUX",
 		"RX_TX DEC2_INP", "TX DEC2 MUX",

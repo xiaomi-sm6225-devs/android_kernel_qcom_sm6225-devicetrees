@@ -12,8 +12,10 @@
 };
 
 &besbev_codec {
-		qcom,swr_ch_map = <0 SPKR_L 0x1 0 LO>,
-				<2 ADC1 0x1 0 SWRM_TX1_CH1>, <2 ADC2 0x2 0 SWRM_TX1_CH2>;
+	qcom,visense-support = <0>;
+	qcom,swr_ch_map = <0 SPKR_L 0x1 0 LO>,
+		<2 ADC1 0x1 0 SWRM_TX1_CH1>,
+		<2 ADC2 0x2 0 SWRM_TX1_CH2>;
 };
 
 &monaco_snd {
@@ -24,7 +26,6 @@
 	qcom,wcn-btfm = <0>;
 	qcom,bt-slim-clk-src-ctrl = <1>;
 	qcom,va-bolero-codec = <1>;
-	qcom,visense-enable = <0>;
 	qcom,audio-routing =
 		"AMIC1", "Analog Mic1",
 		"Analog Mic1","MIC BIAS1",
