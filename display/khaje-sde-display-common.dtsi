@@ -78,15 +78,6 @@
 			qcom,dsi-dyn-clk-list =
 				<976190400 988392784 984325320 980257864>;
 		};
-                timing@1 {
-                        qcom,mdss-dsi-panel-phy-timings = [00 23 09 09 26 24 09
-                                        09 09 02 04 00 1E 19];
-                        qcom,display-topology = <1 0 1>;
-                        qcom,default-topology-index = <0>;
-			qcom,dsi-dyn-clk-list =
-				<976190400 988392784 984325320 980257864>;
-                };
-
 	};
 };
 
