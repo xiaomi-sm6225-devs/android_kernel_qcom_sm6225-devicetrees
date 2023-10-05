@@ -2470,6 +2470,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb3 {
@@ -2481,6 +2482,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb4 {
@@ -2492,6 +2494,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb5 {
@@ -2503,6 +2506,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb6 {
@@ -2514,6 +2518,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb7 {
@@ -2525,6 +2530,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb8 {
@@ -2536,6 +2542,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb9 {
@@ -2590,6 +2597,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb14 {
@@ -2600,6 +2608,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb15 {
@@ -2611,6 +2620,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb16 {
@@ -2622,6 +2632,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb17 {
@@ -2633,6 +2644,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 
 		qcom,msm_fastrpc_compute_cb18 {
@@ -2644,6 +2656,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
 		};
 	};
 
