@@ -43,11 +43,7 @@ dtbo-y += nxp/crow-nfc.dtbo \
 endif
 
 ifeq ($(CONFIG_ARCH_TRINKET),y)
-dtbo-y += nxp/trinket-nfc.dtbo \
-	  nxp/trinket-nfc-mtp.dtbo \
-	  nxp/trinket-nfc-qrd.dtbo \
-	  nxp/trinket-nfc-cdp.dtbo \
-	  nxp/trinket-nfc-rcm.dtbo
+dtbo-y += nxp/trinket-nfc-iot-idp.dtbo
 endif
 
 always-y	:= $(dtb-y) $(dtbo-y)
