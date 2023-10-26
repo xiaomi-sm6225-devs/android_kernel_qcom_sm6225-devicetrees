@@ -351,7 +351,7 @@
 
 	/* MDSS rotator */
 	mdss_rotator: qcom,mdss_rotator@5e00000 {
-		status = "disabled";
+		status = "okay";
 		compatible = "qcom,sde_rotator";
 		reg = <0x5e00000 0xac000>,
 			<0x5eb0000 0x2008>;
