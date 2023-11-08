@@ -1688,29 +1688,17 @@
 		clock-names = "cfg_ahb_clk";
 	};
 
-	qcom,llcc@1100000 {
-		reg = <0x1100000 0x250000>;
-		reg-names = "llcc_base";
-		qcom,llcc-banks-off = <0x0 0x80000 >;
-		qcom,llcc-broadcast-off = <0x200000>;
+	cache-controller@1100000 {
+		compatible = "qcom,sdm670-llcc";
+		reg = <0x1100000 0xD0000> , <0x1300000 0x50000>;
+		reg-names = "llcc_base", "llcc_broadcast_base";
+		interrupts = <GIC_SPI 582 IRQ_TYPE_LEVEL_HIGH>;
+		cap-based-alloc-and-pwr-collapse;
 
-		llcc: qcom,sdm670-llcc {
-			#cache-cells = <1>;
-			max-slices = <32>;
-			qcom,dump-size = <0x80000>;
-		};
-
-		qcom,llcc-erp {
-			interrupt-names = "ecc_irq";
-			interrupts = <GIC_SPI 582 IRQ_TYPE_LEVEL_HIGH>;
-		};
-
-		LLCC_1: llcc_1_dcache {
-			qcom,dump-size = <0xd8000>;
-		};
-
-		LLCC_2: llcc_2_dcache {
-			qcom,dump-size = <0xd8000>;
+		llcc-perfmon {
+			compatible = "qcom,llcc-perfmon";
+			clocks = <&aoss_qmp QDSS_CLK>;
+			clock-names = "qdss_clk";
 		};
 	};
 
