@@ -275,8 +275,7 @@
 			qcom,iommu-dma-addr-pool = <0xa0000000 0x10000000>;
 			qcom,iommu-dma = "fastmap";
 			qcom,iommu-pagetable = "coherent";
-			qcom,iommu-faults = "stall-disable", "HUPCF", "no-CFRE",
-					    "non-fatal";
+			qcom,iommu-faults = "stall-disable", "HUPCF", "non-fatal";
 		};
 	};
 };
@@ -298,8 +297,7 @@
 			qcom,iommu-dma-addr-pool = <0xa0000000 0x10000000>;
 			qcom,iommu-dma = "fastmap";
 			qcom,iommu-pagetable = "coherent";
-			qcom,iommu-faults = "stall-disable", "HUPCF", "no-CFRE",
-					    "non-fatal";
+			qcom,iommu-faults = "stall-disable", "HUPCF", "non-fatal";
 		};
 	};
 };

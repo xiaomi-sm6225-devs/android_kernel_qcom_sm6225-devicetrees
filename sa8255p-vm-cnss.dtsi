@@ -38,19 +38,20 @@
 		qcom,wlan-rc-num = <0>;
 		qcom,bus-type=<0>;
 		qcom,notify-modem-status;
-		qcom,wlan-cbc-enabled;
 
 		reg = <0xb0000000 0x10000>;
 		reg-names = "smmu_iova_ipa";
 
 		vdd-wlan-ctrl1-supply = <&vreg_conn_pa>;
+		vdd-wlan-ctrl2-supply = <&vreg_conn_1p8>;
 		vdd-wlan-aon-supply = <&pm8775_c_l2>;
 		vdd-wlan-rfa1-supply = <&pm8775_e_l6>;
 		vdd-wlan-rfa2-supply = <&pm8775_a_s5>;
 
-		wlan_vregs = "vdd-wlan-ctrl1", "vdd-wlan-aon",
+		wlan_vregs = "vdd-wlan-ctrl1", "vdd-wlan-ctrl2", "vdd-wlan-aon",
 			     "vdd-wlan-rfa1", "vdd-wlan-rfa2";
 		qcom,vdd-wlan-ctrl1-config = <0 0 0 0 0>;
+		qcom,vdd-wlan-ctrl2-config = <0 0 0 0 0>;
 		/* no vote-off as sw_ctrl is not supported */
 		qcom,vdd-wlan-aon-config = <1055000 1055000 0 0 0>;
 		qcom,vdd-wlan-rfa1-config = <1350000 1350000 450000 0 0>;
@@ -65,6 +66,16 @@
 		chip_cfg@0 {
 			supported-ids = <0x1103>;
 			qcom,wlan-ramdump-dynamic = <0x420000>;
+		};
+
+		chip_cfg@1 {
+			supported-ids = <0x1102>;
+			qcom,wlan-ramdump-dynamic = <0x400000>;
+		};
+
+		chip_cfg@2 {
+			supported-ids = <0x1107>;
+			qcom,wlan-ramdump-dynamic = <0x780000>;
 		};
 	};
 };

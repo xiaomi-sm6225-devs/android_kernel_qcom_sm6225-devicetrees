@@ -51,7 +51,7 @@
 
 		supported-ids = <0x110E>;
 		wlan-en-gpio = <&tlmm 16 0>;
-		qcom,bt-en-gpio = <&tlmm 17 0>;
+		qcom,bt-en-gpio = <&pm8550vs_f 3 0>;
 		qcom,sw-ctrl-gpio = <&tlmm 18 0>;
 		/* List of GPIOs to be setup for interrupt wakeup capable */
 		mpm_wake_set_gpios = <18 19>;
@@ -61,6 +61,7 @@
 		qcom,wlan;
 		qcom,wlan-rc-num = <0>;
 		qcom,wlan-ramdump-dynamic = <0x780000>;
+		qcom,wlan-cbc-enabled;
 		cnss-enable-self-recovery;
 		use-pm-domain;
 		qcom,same-dt-multi-dev;
@@ -68,19 +69,17 @@
 		qcom,qmp = <&aoss_qmp>;
 		msix-match-addr = <0x3000>;
 
-		vdd-wlan-io-supply = <&L15B>;
+		vdd-wlan-io-supply = <&L3F>;
 		qcom,vdd-wlan-io-config = <1800000 1800000 0 0 1>;
-		vdd-wlan-io12-supply = <&L3C>;
+		vdd-wlan-io12-supply = <&L2F>;
 		qcom,vdd-wlan-io12-config = <1200000 1200000 0 0 1>;
-		vdd-wlan-supply = <&S4I>;
-		qcom,vdd-wlan-config = <876000 876000 0 0 1>;
-		vdd-wlan-aon-supply = <&S2C>;
+		vdd-wlan-aon-supply = <&S4D>;
 		qcom,vdd-wlan-aon-config = <876000 876000 0 0 1>;
-		vdd-wlan-dig-supply = <&S3C>;
+		vdd-wlan-dig-supply = <&S4J>;
 		qcom,vdd-wlan-dig-config = <876000 876000 0 0 1>;
-		vdd-wlan-rfa1-supply = <&S6C>;
+		vdd-wlan-rfa1-supply = <&S3G>;
 		qcom,vdd-wlan-rfa1-config = <1860000 1860000 0 0 1>;
-		vdd-wlan-rfa2-supply = <&S1C>;
+		vdd-wlan-rfa2-supply = <&S7I>;
 		qcom,vdd-wlan-rfa2-config = <1312000 1312000 0 0 1>;
 		vdd-wlan-ant-share-supply = <&L6K>;
 		qcom,vdd-wlan-ant-share-config = <1800000 1800000 0 0 1>;
@@ -132,36 +131,32 @@
 		<7500 2188800>;
 
 		qcom,vreg_pdc_map =
-			"l15B", "rf",
-			"l3c", "rf",
-			"s1c", "rf",
-			"s6c", "rf",
-			"s2c", "bb",
-			"s4i", "rf";
+			"s4j", "rf",
+			"s4d", "bb",
+			"s3g", "rf",
+			"s7i", "rf";
 
 		qcom,pmu_vreg_map =
-			"VDDD_AON_0P9", "s3c",
-			"VDDA_RFA_1P9", "s6c",
-			"VDDA_RFA_1P3", "s1c",
-			"VDDA_RFA_0P9", "s3c",
-			"VDDD_WLMX_0P9", "s2c",
-			"VDDD_WLCX_0P9", "s4i",
-			"VDDD_BTCX_0P9", "s3c",
-			"VDDD_BTCMX_0P9", "s3c";
-			"VDDA_PCIE_1P2", "s1c";
-			"VDDA_PCIE_0P9", "s1c";
+			"VDDD_AON_0P9", "s4j",
+			"VDDA_RFA_1P9", "s3g",
+			"VDDA_RFA_1P3", "s7i",
+			"VDDA_RFA_0P9", "s4j",
+			"VDDD_WLMX_0P9", "s4d",
+			"VDDD_WLCX_0P9", "s4j",
+			"VDDD_BTCX_0P9", "s4j",
+			"VDDD_BTCMX_0P9", "s4j";
+			"VDDA_PCIE_1P2", "s7i";
+			"VDDA_PCIE_0P9", "s7i";
 
 		qcom,pdc_init_table =
-		"{class: wlan_pdc, ss: rf, res: s3c.v, upval: 876}",
-		"{class: wlan_pdc, ss: rf, res: s3c.v, dwnval: 796}",
-		"{class: wlan_pdc, ss: rf, res: s1c.v, upval: 1312}",
-		"{class: wlan_pdc, ss: rf, res: s1c.v, dwnval: 1244}",
-		"{class: wlan_pdc, ss: rf, res: s6c.v, upval: 1860}",
-		"{class: wlan_pdc, ss: rf, res: s6c.v, dwnval: 0}",
-		"{class: wlan_pdc, ss: bb, res: s2c.v, upval: 876}",
-		"{class: wlan_pdc, ss: bb, res: s2c.v, dwnval: 560}",
-		"{class: wlan_pdc, ss: bb, res: s4i.v, upval: 876}",
-		"{class: wlan_pdc, ss: bb, res: s4i.v, dwnval: 796}";
+		"{class: wlan_pdc, ss: rf, res: s4j.v, upval: 876}",
+		"{class: wlan_pdc, ss: rf, res: s4j.v, dwnval: 796}",
+		"{class: wlan_pdc, ss: bb, res: s4d.v, upval: 876}",
+		"{class: wlan_pdc, ss: bb, res: s4d.v, dwnval: 560}",
+		"{class: wlan_pdc, ss: rf, res: s3g.v, upval: 1860}",
+		"{class: wlan_pdc, ss: rf, res: s3g.v, dwnval: 0}",
+		"{class: wlan_pdc, ss: rf, res: s7i.v, upval: 1312}",
+		"{class: wlan_pdc, ss: rf, res: s7i.v, dwnval: 1244}",
 	};
 };
 

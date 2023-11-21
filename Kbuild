@@ -49,13 +49,25 @@ dtbo-y += pineapple-kiwi-cnss.dtbo
 dtbo-y += pineapplep-hdk-kiwi-cnss.dtbo
 endif
 
+ifeq ($(CONFIG_ARCH_SUN),y)
+dtbo-y += sun-peach-cnss.dtbo
+dtbo-y += sun-kiwi-cnss.dtbo
+endif
+
+ifeq ($(CONFIG_ARCH_CLIFFS),y)
+dtbo-y += cliffs-kiwi-cnss.dtbo
+dtbo-y += cliffs-qca6750.dtbo
+endif
+
 ifeq ($(CONFIG_ARCH_MONACO),y)
 dtbo-y += monaco-cnss.dtbo
 dtbo-y += monaco-standalone-cnss.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_LEMANS),y)
+ifneq ($(CONFIG_ARCH_QTI_VM),y)
 dtbo-y += lemans-cnss.dtbo
+endif
 endif
 
 ifeq ($(CONFIG_QTI_QUIN_GVM),y)
@@ -74,6 +86,10 @@ endif
 
 ifeq ($(CONFIG_ARCH_KONA),y)
 dtbo-y += kona-iot-vc-cnss.dtbo
+endif
+
+ifeq ($(CONFIG_ARCH_TRINKET),y)
+dtbo-y += trinket-cnss.dtbo
 endif
 
 always-y	:= $(dtb-y) $(dtbo-y)
