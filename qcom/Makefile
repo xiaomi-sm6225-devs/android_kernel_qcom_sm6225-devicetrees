@@ -227,7 +227,7 @@ qcs405-dtb-$(CONFIG_ARCH_QCS405) += \
 qcs405-overlays-dtb-$(CONFIG_ARCH_QCS405) += $(QCS405_BOARDS) $(QCS405_BASE_DTB)
 dtb-y += $(qcs405-dtb-y)
 
-TRINKET_BASE_DTB += trinket-iot.dtb trinketp-iot.dtb
+TRINKET_BASE_DTB += trinket-iot.dtb trinketp-iot.dtb trinket.dtb
 
 TRINKET_BOARDS += \
 	trinket-iot-idp-overlay.dtbo \
@@ -239,7 +239,12 @@ TRINKET_BOARDS += \
 	trinketp-iot-dp-idp-overlay.dtbo \
 	trinketp-iot-external-codec-idp-overlay.dtbo \
 	trinketp-iot-usbc-external-codec-idp-overlay.dtbo \
-	trinketp-iot-usbc-idp-overlay.dtbo
+	trinketp-iot-usbc-idp-overlay.dtbo \
+	trinket-dp-idp-overlay.dtbo \
+	trinket-idp-overlay.dtbo \
+	trinket-external-codec-idp-overlay.dtbo \
+	trinket-usbc-external-codec-idp-overlay.dtbo \
+	trinket-usbc-idp-overlay.dtbo
 
 trinket-dtb-$(CONFIG_ARCH_TRINKET) += \
         $(call add-overlays, $(TRINKET_BOARDS) ,$(TRINKET_BASE_DTB))

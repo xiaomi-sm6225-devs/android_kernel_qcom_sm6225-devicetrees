@@ -13,7 +13,7 @@
 / {
 	model = "Qualcomm Technologies, Inc. Trinket";
 	compatible = "qcom,trinket";
-	qcom,msm-id = <467 0x10000>;
+	qcom,msm-id = <394 0x10000>;
 	interrupt-parent = <&intc>;
 
 	#address-cells = <2>;
