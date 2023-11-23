@@ -132,13 +132,6 @@
 	};
 };
 
-&clock_cpucc {
-	/delete-property/ vdd_l3_mx_ao-supply;
-	/delete-property/ vdd_pwrcl_mx_ao-supply;
-	vdd_l3_mx_ao-supply = <&pm660_s2_level_ao>;
-	vdd_pwrcl_mx_ao-supply = <&pm660_s2_level_ao>;
-};
-
 &gcc {
 	/delete-property/ vdd_cx-supply;
 	/delete-property/ vdd_cx_ao-supply;

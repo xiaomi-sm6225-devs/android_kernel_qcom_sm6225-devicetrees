@@ -4,9 +4,11 @@
 #include <dt-bindings/clock/qcom,dispcc-sdm845.h>
 #include <dt-bindings/clock/qcom,gpucc-sdm845.h>
 #include <dt-bindings/clock/qcom,videocc-sdm845.h>
+#include <dt-bindings/clock/qcom,aop-qmp.h>
 #include <dt-bindings/interconnect/qcom,icc.h>
 #include <dt-bindings/clock/qcom,rpmh.h>
 #include <dt-bindings/soc/qcom,rpmh-rsc.h>
+#include <dt-bindings/interconnect/qcom,sdm670.h>
 
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include <dt-bindings/clock/qcom,aop-qmp.h>
@@ -62,6 +64,7 @@
 			sched-energy-costs = <&CPU_COST_0 &CLUSTER_COST_0>;
 			qcom,lmh-dcvs = <&lmh_dcvs0>;
 			#cooling-cells = <2>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			L2_0: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-size = <0x20000>;
@@ -95,6 +98,7 @@
 			sched-energy-costs = <&CPU_COST_0 &CLUSTER_COST_0>;
 			qcom,lmh-dcvs = <&lmh_dcvs0>;
 			#cooling-cells = <2>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			L2_100: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-size = <0x20000>;
@@ -123,6 +127,7 @@
 			sched-energy-costs = <&CPU_COST_0 &CLUSTER_COST_0>;
 			qcom,lmh-dcvs = <&lmh_dcvs0>;
 			#cooling-cells = <2>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			L2_200: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-size = <0x20000>;
@@ -151,6 +156,7 @@
 			sched-energy-costs = <&CPU_COST_0 &CLUSTER_COST_0>;
 			qcom,lmh-dcvs = <&lmh_dcvs0>;
 			#cooling-cells = <2>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			L2_300: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-size = <0x20000>;
@@ -179,6 +185,7 @@
 			sched-energy-costs = <&CPU_COST_0 &CLUSTER_COST_0>;
 			qcom,lmh-dcvs = <&lmh_dcvs0>;
 			#cooling-cells = <2>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			L2_400: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-size = <0x20000>;
@@ -207,6 +214,7 @@
 			sched-energy-costs = <&CPU_COST_0 &CLUSTER_COST_0>;
 			qcom,lmh-dcvs = <&lmh_dcvs0>;
 			#cooling-cells = <2>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			L2_500: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-size = <0x20000>;
@@ -235,6 +243,7 @@
 			sched-energy-costs = <&CPU_COST_1 &CLUSTER_COST_1>;
 			qcom,lmh-dcvs = <&lmh_dcvs1>;
 			#cooling-cells = <2>;
+			qcom,freq-domain = <&cpufreq_hw 1>;
 			L2_600: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-size = <0x40000>;
@@ -263,6 +272,7 @@
 			sched-energy-costs = <&CPU_COST_1 &CLUSTER_COST_1>;
 			qcom,lmh-dcvs = <&lmh_dcvs1>;
 			#cooling-cells = <2>;
+			qcom,freq-domain = <&cpufreq_hw 1>;
 			L2_700: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-size = <0x40000>;
@@ -731,7 +741,7 @@
 		reg = <0x7040000 0x1000>;
 		reg-names = "etm-base";
 
-		clocks = <&clock_aop QDSS_CLK>;
+		clocks = <&aoss_qmp QDSS_CLK>;
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU0>;
@@ -742,7 +752,7 @@
 		reg = <0x7140000 0x1000>;
 		reg-names = "etm-base";
 
-		clocks = <&clock_aop QDSS_CLK>;
+		clocks = <&aoss_qmp QDSS_CLK>;
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU1>;
@@ -753,7 +763,7 @@
 		reg = <0x7240000 0x1000>;
 		reg-names = "etm-base";
 
-		clocks = <&clock_aop QDSS_CLK>;
+		clocks = <&aoss_qmp QDSS_CLK>;
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU2>;
@@ -764,7 +774,7 @@
 		reg = <0x7340000 0x1000>;
 		reg-names = "etm-base";
 
-		clocks = <&clock_aop QDSS_CLK>;
+		clocks = <&aoss_qmp QDSS_CLK>;
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU3>;
@@ -775,7 +785,7 @@
 		reg = <0x7440000 0x1000>;
 		reg-names = "etm-base";
 
-		clocks = <&clock_aop QDSS_CLK>;
+		clocks = <&aoss_qmp QDSS_CLK>;
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU4>;
@@ -786,7 +796,7 @@
 		reg = <0x7540000 0x1000>;
 		reg-names = "etm-base";
 
-		clocks = <&clock_aop QDSS_CLK>;
+		clocks = <&aoss_qmp QDSS_CLK>;
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU5>;
@@ -797,7 +807,7 @@
 		reg = <0x7640000 0x1000>;
 		reg-names = "etm-base";
 
-		clocks = <&clock_aop QDSS_CLK>;
+		clocks = <&aoss_qmp QDSS_CLK>;
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU6>;
@@ -808,7 +818,7 @@
 		reg = <0x7740000 0x1000>;
 		reg-names = "etm-base";
 
-		clocks = <&clock_aop QDSS_CLK>;
+		clocks = <&aoss_qmp QDSS_CLK>;
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU7>;
@@ -1139,7 +1149,6 @@
 		clock-names = "bi_tcxo";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
-		/* TBD */
 	};
 
 	dispcc: clock-controller@af00000 {
@@ -1147,8 +1156,11 @@
 		reg = <0xaf00000 0x10000>;
 		reg-names = "cc_base";
 		vdd_cx-supply = <&pm660l_s3_level>;
-		clocks = <&rpmhcc RPMH_CXO_CLK>;
-		clock-names = "bi_tcxo";
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&gcc GCC_DISP_GPLL0_CLK_SRC>,
+			<&gcc GCC_DISP_GPLL0_DIV_CLK_SRC>;
+		clock-names = "bi_tcxo", "gcc_disp_gpll0_clk_src",
+				"gcc_disp_gpll0_div_clk_src";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -1160,51 +1172,52 @@
 		vdd_cx-supply = <&pm660l_s3_level>;
 		vdd_mx-supply = <&pm660l_s1_level>;
 		vdd_gfx-supply = <&pm660l_s2_level>;
-		clocks = <&rpmhcc RPMH_CXO_CLK>;
-		clock-names = "bi_tcxo";
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&gcc GCC_GPU_GPLL0_CLK_SRC>,
+			<&gcc GCC_GPU_GPLL0_DIV_CLK_SRC>;
+		clock-names = "bi_tcxo",
+			"gcc_gpu_gpll0_clk_src",
+			"gcc_gpu_gpll0_div_clk_src";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
 
-	cpucc_debug: syscon@17970018 {
+	cpucc: syscon@17970018 {
 		compatible = "syscon";
 		reg = <0x17970018 0x4>;
 	};
 
 	debugcc: clock-controller@0 {
 		compatible = "qcom,sdm845-debugcc";
-		qcom,cc-count = <6>;
 		qcom,gcc = <&gcc>;
 		qcom,videocc = <&videocc>;
 		qcom,camcc = <&camcc>;
 		qcom,dispcc = <&dispcc>;
 		qcom,gpucc = <&gpucc>;
-		qcom,cpucc = <&cpucc_debug>;
-		clock-names = "xo_clk_src";
-		clocks = <&rpmhcc RPMH_CXO_CLK>;
+		qcom,cpucc = <&cpucc>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&camcc 0>,
+			<&dispcc 0>,
+			<&gcc 0>,
+			<&gpucc 0>,
+			<&videocc 0>;
+		clock-names = "xo_clk_src",
+				"camcc",
+				"dispcc",
+				"gcc",
+				"gpucc",
+				"videocc";
 		#clock-cells = <1>;
 	};
 
-	clock_cpucc: qcom,cpucc@0x17d41000 {
-		reg = <0x17d41000 0x1400>,
-			<0x17d43000 0x1400>,
+	cpufreq_hw: cpufreq@17d41000 {
+		compatible = "qcom,cpufreq-hw";
+		reg = <0x17d43000 0x1400>,
 			<0x17d45800 0x1400>;
-		reg-names = "osm_l3_base", "osm_pwrcl_base", "osm_perfcl_base";
-		vdd_l3_mx_ao-supply = <&pm660l_s1_level_ao>;
-		vdd_pwrcl_mx_ao-supply = <&pm660l_s1_level_ao>;
-
-		qcom,mx-turbo-freq = <1440000000 1708000000 3300000001>;
-		l3-devs = <&l3_cpu0 &l3_cpu6 &l3_cdsp>;
-
-		clock-names = "xo_ao";
-		clocks = <&rpmhcc RPMH_CXO_CLK_A>;
-		#clock-cells = <1>;
-	};
-
-	clock_aop: qcom,aopclk {
-		#clock-cells = <1>;
-		mboxes = <&qmp_aop 0>;
-		mbox-names = "qdss_clk";
+		reg-names = "freq-domain0", "freq-domain1";
+		clocks = <&rpmhcc RPMH_CXO_CLK>, <&gcc GPLL0>;
+		clock-names = "xo", "alternate";
+		#freq-domain-cells = <1>;
 	};
 
 	slim_aud: slim@62dc0000 {
@@ -2850,16 +2863,6 @@
 		interrupts = <1 5 4>;
 	};
 
-	gpu_gx_domain_addr: syscon@0x5091508 {
-		compatible = "syscon";
-		reg = <0x5091508 0x4>;
-	};
-
-	gpu_gx_sw_reset: syscon@0x5091008 {
-		compatible = "syscon";
-		reg = <0x5091008 0x4>;
-	};
-
 	qfprom: qfprom@0x780000 {
 		compatible	= "qcom,qfprom";
 		reg		= <0x00784000 0x1000>;
@@ -2915,7 +2918,6 @@
 };
 
 &bps_gdsc {
-	qcom,support-hw-trigger;
 	status = "ok";
 };
 
@@ -2928,12 +2930,10 @@
 };
 
 &ipe_0_gdsc {
-	qcom,support-hw-trigger;
 	status = "ok";
 };
 
 &ipe_1_gdsc {
-	qcom,support-hw-trigger;
 	status = "ok";
 };
 
@@ -2944,7 +2944,6 @@
 &mdss_core_gdsc {
 	status = "ok";
 	proxy-supply = <&mdss_core_gdsc>;
-	qcom,proxy-consumer-enable;
 };
 
 &gpu_cx_gdsc {
@@ -2954,14 +2953,19 @@
 };
 
 &gpu_gx_gdsc {
-	clock-names = "core_root_clk";
-	clocks = <&gpucc GPU_CC_GX_GFX3D_CLK_SRC>;
-	qcom,force-enable-root-clk;
 	parent-supply = <&pm660l_s2_level>;
-	domain-addr = <&gpu_gx_domain_addr>;
-	sw-reset = <&gpu_gx_sw_reset>;
-	qcom,skip-disable-before-sw-enable;
-	qcom,reset-aon-logic;
+	status = "ok";
+};
+
+&vcodec0_gdsc {
+	status = "ok";
+};
+
+&vcodec1_gdsc {
+	status = "ok";
+};
+
+&venus_gdsc {
 	status = "ok";
 };
 
