@@ -1723,8 +1723,14 @@
 		#reset-cells = <1>;
 	};
 
+	cpucc_debug: syscon@f11101c {
+		compatible = "syscon";
+		reg = <0xf11101c 0x4>;
+	};
+
 	debugcc: clock-controller@0 {
 		compatible = "qcom,trinket-debugcc";
+		qcom,cpucc = <&cpucc_debug>;
 		qcom,dispcc = <&dispcc>;
 		qcom,gcc = <&gcc>;
 		qcom,gpucc = <&gpucc>;
