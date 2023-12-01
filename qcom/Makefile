@@ -60,6 +60,7 @@ KALAMA_BOARDS += \
 		 kalamap-hdk-overlay.dtbo \
 		 kalamap-sg-hhg-overlay.dtbo \
 		 kalamap-rb5-gen2-overlay.dtbo \
+		 kalamap-rb5-gen2-dvt-overlay.dtbo \
 		 kalamap-aim300-overlay.dtbo
 
 NOAPQ_KALAMA_BOARDS += \
