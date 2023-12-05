@@ -860,6 +860,8 @@
 		qcom,qmp = <&aoss_qmp>;
 		label = "aop";
 		#mbox-cells = <1>;
+		qcom,subsys-name = "lpass", "cdsp";
+		qcom,rproc-handle = <&adsp_pas>, <&cdsp_pas>;
 	};
 
 	sys-pm-vx@c320000 {
