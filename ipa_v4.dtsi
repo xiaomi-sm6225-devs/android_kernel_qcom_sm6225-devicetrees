@@ -34,6 +34,7 @@
 			qcom,ipa-hw-ver = <16>; /* IPA core version = IPAv4.2 */
 			qcom,ipa-hw-mode = <0>;
 			qcom,ee = <0>;
+			qcom,platform-type = <1>; /* MSM platform */
 			qcom,use-ipa-tethering-bridge;
 			qcom,modem-cfg-emb-pipe-flt;
 			qcom,ipa-wdi2;
