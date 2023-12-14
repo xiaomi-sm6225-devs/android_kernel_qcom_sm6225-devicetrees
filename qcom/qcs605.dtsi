@@ -66,6 +66,11 @@
 	qcom,rmnet-ipa {
 		status = "disabled";
 	};
+
+	cache-controller@1100000 {
+		/delete-property/ compatible;
+		compatible = "qcom,qcs605-llcc";
+	};
 };
 
 &ipa_hw {
