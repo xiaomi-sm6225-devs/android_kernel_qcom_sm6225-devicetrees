@@ -1944,6 +1944,8 @@
 		qcom,iommu-dma = "atomic";
 
 		bus-width = <8>;
+		nvmem-cells = <&boot_config>;
+		nvmem-cell-names = "boot_conf";
 		non-removable;
 
 		cap-mmc-hw-reset;
