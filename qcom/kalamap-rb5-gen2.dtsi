@@ -131,6 +131,8 @@
 		regulator-min-microvolt = <1000000>;
 		regulator-max-microvolt = <1000000>;
 		enable-active-high;
+		regulator-always-on;
+		regulator-boot-on;
 		regulator-enable-ramp-delay = <5000>;
 	};
 
@@ -144,6 +146,8 @@
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
 		enable-active-high;
+		regulator-always-on;
+		regulator-boot-on;
 		regulator-enable-ramp-delay = <10000>;
 	};
 
@@ -157,6 +161,8 @@
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
 		enable-active-high;
+		regulator-always-on;
+		regulator-boot-on;
 		regulator-enable-ramp-delay = <10000>;
 	};
 
@@ -737,7 +743,7 @@
 	qcom,boot-option = <0x2>;
 
 	pcie-i2c-phandle = <&qupv3_hub_i2c4>;
-	vreg-3p3-supply = <&usb_hub_rest_vreg>;
+	vreg-3p3-supply = <&qps615_resx0_0p9_vreg>;
 	msi-parent = <&pcie0_msi>;
 
 	 qcom,pcie-phy-ver = <102>;
