@@ -1,3 +1,7 @@
+ifeq ($(CONFIG_ARCH_MONACO_AUTO),y)
+dtbo-y += monaco_auto-cnss.dtbo
+endif
+
 ifeq ($(CONFIG_ARCH_WAIPIO),y)
 dtbo-y += waipio-cnss.dtbo
 dtbo-y += waipio-kiwi-cnss.dtbo
@@ -22,6 +26,7 @@ endif
 ifeq ($(CONFIG_ARCH_HOLI),y)
 dtbo-y += holi-cnss.dtbo
 dtbo-y += holi-pm6125-cnss.dtbo
+dtbo-y += holi-pm6125-nopmi-cnss.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_CROW),y)
@@ -51,7 +56,7 @@ endif
 
 ifeq ($(CONFIG_ARCH_SUN),y)
 dtbo-y += sun-peach-cnss.dtbo
-dtbo-y += sun-kiwi-cnss.dtbo
+dtbo-y += sun-peach-cnss-v8.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_CLIFFS),y)

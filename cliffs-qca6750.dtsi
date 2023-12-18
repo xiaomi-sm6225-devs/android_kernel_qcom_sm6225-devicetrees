@@ -33,7 +33,7 @@
 	icnss2: qcom,wcn6750 {
 		compatible = "qcom,wcn6750";
 		reg = <0x17110040 0x0>,
-		      <0xb0000000 0x10000>;
+		      <0xc0000000 0x10000>;
 		reg-names = "msi_addr", "smmu_iova_ipa";
 		qcom,rproc-handle = <&wpss_pas>;
 		iommus = <&apps_smmu 0x1400 0x1>;
@@ -72,8 +72,8 @@
 
 		qcom,iommu-dma = "fastmap";
 		qcom,iommu-faults = "stall-disable", "HUPCF", "non-fatal";
-		qcom,iommu-dma-addr-pool = <0xa0000000 0x10000000>;
-		qcom,iommu-geometry = <0xa0000000 0x10010000>;
+		qcom,iommu-dma-addr-pool = <0xb0000000 0x10000000>;
+		qcom,iommu-geometry = <0xb0000000 0x10010000>;
 		dma-coherent;
 		qcom,fw-prefix;
 		qcom,wlan;
