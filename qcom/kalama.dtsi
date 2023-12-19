@@ -2459,6 +2459,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			pd-type = <1>;	/* ROOT_PD */
 		};
 
 		qcom,msm_fastrpc_compute_cb2 {
@@ -2471,6 +2472,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb3 {
@@ -2483,6 +2485,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb4 {
@@ -2495,6 +2498,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb5 {
@@ -2507,6 +2511,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb6 {
@@ -2519,6 +2524,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb7 {
@@ -2531,6 +2537,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb8 {
@@ -2543,6 +2550,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb9 {
@@ -2556,6 +2564,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			qcom,iommu-vmid = <0xA>;	/* VMID_CP_PIXEL */
 			dma-coherent;
+			pd-type = <6>;	/* CPZ_USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb10 {
@@ -2566,6 +2575,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			pd-type = <1>;	/* ROOT_PD */
 		};
 
 		qcom,msm_fastrpc_compute_cb11 {
@@ -2576,6 +2586,7 @@
 			qcom,iommu-dma-addr-pool = <0x60000000 0x98000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
+			pd-type = <2>;	/* AUDIO_STATICPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb12 {
@@ -2587,6 +2598,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			shared-cb = <8>;
 			dma-coherent;
+			pd-type = <3>;	/* SENSORS_STATICPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb13 {
@@ -2598,6 +2610,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb14 {
@@ -2609,6 +2622,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb15 {
@@ -2621,6 +2635,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb16 {
@@ -2633,6 +2648,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb17 {
@@ -2645,6 +2661,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 
 		qcom,msm_fastrpc_compute_cb18 {
@@ -2657,6 +2674,7 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			qcom,iova-max-align-shift = <9>; /* Set MAX alignment to 2 MB*/
+			pd-type = <7>;	/* USERPD */
 		};
 	};
 
