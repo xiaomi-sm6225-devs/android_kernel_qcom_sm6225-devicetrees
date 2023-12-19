@@ -1429,12 +1429,6 @@
 			qcom,glinkpkt-dev-name = "glink_pkt_slate_display_data";
 		};
 
-		qcom,glinkpkt-slate-touch-ctrl {
-			qcom,glinkpkt-edge = "slate";
-			qcom,glinkpkt-ch-name = "touch-ctrl";
-			qcom,glinkpkt-dev-name = "glink_pkt_slate_touch_ctrl";
-		};
-
 		qcom,glinkpkt-slate-ssc-usta {
 			qcom,glinkpkt-edge = "slate";
 			qcom,glinkpkt-ch-name = "ssc_usta";
@@ -1664,7 +1658,7 @@
 		qcom,glinkpkt-ss-bt-obex-data {
 			qcom,glinkpkt-edge = "slate";
 			qcom,glinkpkt-ch-name = "ss_bt_obex_data";
-			qcom,glinkpkt-dev-name = "glinkpkt-ss-bt-obex-data";
+			qcom,glinkpkt-dev-name = "glink_pkt_ss_bt_obex_data";
 			};
 
 	};

@@ -860,6 +860,8 @@
 		qcom,qmp = <&aoss_qmp>;
 		label = "aop";
 		#mbox-cells = <1>;
+		qcom,subsys-name = "lpass", "cdsp";
+		qcom,rproc-handle = <&adsp_pas>, <&cdsp_pas>;
 	};
 
 	sys-pm-vx@c320000 {
@@ -2642,6 +2644,7 @@
 		clock-names = "stmmaceth", "pclk", "ptp_ref", "phyaux","sgmi_ref","rgmii";
 		snps,ptp-ref-clk-rate = <230400000>;
 		snps,ptp-req-clk-rate = <125000000>;
+		disable-frame-preem;
 		interrupts-extended = <&intc 0 946 4>;
 		qcom,arm-smmu;
 		gdsc-off-on-suspend;

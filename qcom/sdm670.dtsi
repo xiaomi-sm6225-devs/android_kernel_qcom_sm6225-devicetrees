@@ -693,6 +693,87 @@
 	ranges = <0 0 0 0xffffffff>;
 	compatible = "simple-bus";
 
+	config_noc: interconnect@1500000 {
+		reg = <0x1500000 0x5080>;
+		compatible = "qcom,sdm670-config_noc";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+	};
+
+	system_noc: interconnect@1620000 {
+		reg = <0x1620000 0x16080>;
+		compatible = "qcom,sdm670-system_noc";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+	};
+
+	camnoc_virt: interconnect@0  {
+		compatible = "qcom,sdm670-camnoc_virt";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+	};
+
+	aggre1_noc: interconnect@16e0000 {
+		reg = <0x16E0000 0x1F080>;
+		compatible = "qcom,sdm670-aggre1_noc";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		clocks = <&gcc GCC_AGGRE_UFS_PHY_AXI_CLK>;
+	};
+
+	aggre2_noc: interconnect@1700000 {
+		reg = <0x1700000 0x1F280>;
+		compatible = "qcom,sdm670-aggre2_noc";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		clocks = <&gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>,
+			<&rpmhcc RPMH_IPA_CLK>;
+	};
+
+	mem_noc: interconnect@1380000 {
+		reg = <0x1380000 0x27200>;
+		compatible = "qcom,sdm670-mem_noc";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos", "disp";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+	};
+
+	mmss_noc: interconnect@1740000 {
+		reg = <0x1740000 0x1C100>;
+		compatible = "qcom,sdm670-mmss_noc";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos", "disp";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+	};
+
+	dc_noc: interconnect@14E0000 {
+		reg = <0x14E0000 0x400>;
+		compatible = "qcom,sdm670-dc_noc";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+	};
+
+	gladiator_noc: interconnect@17900000 {
+		reg = <0x17900000 0xD080>;
+		compatible = "qcom,sdm670-gladiator_noc";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+	};
+
+	mc_virt: interconnect@1 {
+		compatible = "qcom,sdm670-mc_virt";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos", "disp";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+	};
+
 	jtag_mm0: jtagmm@7040000 {
 		compatible = "qcom,jtagv8-mm";
 		reg = <0x7040000 0x1000>;
