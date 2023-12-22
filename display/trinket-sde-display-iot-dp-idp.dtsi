@@ -8,5 +8,5 @@
 
 &mdss_mdp {
 	/delete-property/ connectors;
-	connectors = <&sde_dsi &sde_wb &sde_dp>;
+	connectors = <&sde_dsi &sde_wb &sde_dp &smmu_sde_sec &smmu_sde_unsec>;
 };
