@@ -433,6 +433,11 @@
 		bootargs = "console=ttyMSM0,115200n8 loglevel=6 kpti=0 log_buf_len=256K kernel.panic_on_rcu_stall=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-7 ftrace_dump_on_oops fw_devlink.strict=1 printk.console_no_auto_verbose=1 qcom_dma_heaps.enable_bitstream_contig_heap=y ssbd=force-off";
 	};
 
+	boot_device_type {
+		nvmem-cells = <&boot_config>;
+		nvmem-cell-names = "boot_conf";
+	};
+
 	reserved-memory {
 		#address-cells = <2>;
 		#size-cells = <2>;
@@ -1568,6 +1573,10 @@
 		#size-cells = <1>;
 		read-only;
 		ranges;
+
+		boot_config: boot_config@6070 {
+			reg = <0x6070 0x4>;
+		};
 	};
 
 	qcom,msm-cdsp-loader {
@@ -1941,6 +1950,8 @@
 		qcom,iommu-dma = "atomic";
 
 		bus-width = <8>;
+		nvmem-cells = <&boot_config>;
+		nvmem-cell-names = "boot_conf";
 		non-removable;
 
 		cap-mmc-hw-reset;
@@ -2249,6 +2260,10 @@
 
 		lanes-per-direction = <1>;
 		dev-ref-clk-freq = <0>; /* 19.2 MHz */
+
+		nvmem-cells = <&boot_config>;
+		nvmem-cell-names = "boot_conf";
+		non-removable;
 
 		clock-names =
 			"core_clk",
