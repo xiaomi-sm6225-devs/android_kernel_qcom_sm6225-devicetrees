@@ -1025,6 +1025,16 @@
 		compatible = "qcom,logbuf-vendor-hooks";
 	};
 
+	qcom,mem-buf {
+		compatible = "qcom,mem-buf";
+		qcom,vmid = <3>;
+		qcom,mem-buf-capabilities = "supplier";
+	};
+
+	qcom,mem-buf-msgq {
+		compatible = "qcom,mem-buf-msgq";
+	};
+
 	tsens0: tsens@c222000 {
 		compatible = "qcom,tsens24xx";
 		reg = <0xc222000 0x4>,
