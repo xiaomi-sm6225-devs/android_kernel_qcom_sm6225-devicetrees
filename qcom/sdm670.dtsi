@@ -697,17 +697,17 @@
 			<&rpmhcc RPMH_IPA_CLK>;
 	};
 
-	mem_noc: interconnect@1380000 {
-		reg = <0x1380000 0x27200>;
-		compatible = "qcom,sdm670-mem_noc";
+	mmss_noc: interconnect@1740000 {
+		reg = <0x1740000 0x1C100>;
+		compatible = "qcom,sdm670-mmss_noc";
 		#interconnect-cells = <1>;
 		qcom,bcm-voter-names = "hlos", "disp";
 		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
 	};
 
-	mmss_noc: interconnect@1740000 {
-		reg = <0x1740000 0x1C100>;
-		compatible = "qcom,sdm670-mmss_noc";
+	mem_noc: interconnect@1380000 {
+		reg = <0x1380000 0x27200>;
+		compatible = "qcom,sdm670-mem_noc";
 		#interconnect-cells = <1>;
 		qcom,bcm-voter-names = "hlos", "disp";
 		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
