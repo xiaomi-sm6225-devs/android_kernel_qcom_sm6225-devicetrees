@@ -19,7 +19,7 @@
 / {
 	model = "Qualcomm Technologies, Inc. Crow";
 	compatible = "qcom,crow";
-	qcom,msm-id = <608 0x10000>;
+	qcom,msm-id = <608 0x10000>, <644 0x10000>;
 	interrupt-parent = <&intc>;
 
 	#address-cells = <2>;
