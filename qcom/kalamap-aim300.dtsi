@@ -83,6 +83,16 @@
 		enable-active-high;
 		regulator-enable-ramp-delay = <4300>;
 	};
+
+	qca_1p8_vreg: qca_1v8_vreg {
+		compatible = "regulator-fixed";
+		regulator-name = "qca_vreg";
+		gpio = <&tlmm 106 GPIO_ACTIVE_HIGH>;
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		enable-active-high;
+		regulator-enable-ramp-delay = <80000>;
+	};
 };
 
 &qupv3_se8_spi {
@@ -835,6 +845,18 @@
 		/* BDF 2.3.0 */
 		pcie1_bus2_dev3_fn0: pcie1_bus2_dev3_fn0 {
 			reg = <0x1800 0x0 0x0 0x0 0x0>;
+			qps615_eth1,qps615_eth1@pcie1_rp {
+				reg = <0x100 0x0 0x0 0x0 0x0>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&qca_intn_wol_sig>;
+				qcom,phy-rst-gpio = <1>;
+				qcom,phy-rst-delay-us = <20000>;
+				phy-supply = <&qca_1p8_vreg>;
+				interrupts-extended = <&tlmm 177 IRQ_TYPE_EDGE_FALLING>;
+				interrupt-names = "wol_irq";
+				#address-cells = <1>;
+				#size-cells = <1>;
+			};
 		};
 	};
 };
