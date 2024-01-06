@@ -2087,9 +2087,8 @@
 
 	ufshc2_mem: ufshc2@1da4000 {
 		compatible = "qcom,ufshc";
-		reg = <0x1da4000 0x3000>,
-		<0x1da8000 0x8000>;
-		reg-names = "ufs_mem", "ufs_ice";
+		reg = <0x1da4000 0x3000>;
+		reg-names = "ufs_mem";
 		interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
 		phys = <&ufs2phy_mem>;
 		phy-names = "ufsphy";
