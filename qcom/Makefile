@@ -316,7 +316,7 @@ SDM670_LC_BOARDS += \
 qcs605-dtb-$(CONFIG_ARCH_SDM670) += \
 	$(call add-overlays, $(SDM670_BOARDS) ,$(SDM670_BASE_DTB)) \
 	$(call add-overlays, $(SDM670_LC_BOARDS) ,$(SDM670_LC_BASE_DTB))
-qcs605-overlays-dtb-$(CONFIG_ARCH_SDM670) += $(SDM670_BOARDS) $(SDM670_BASE_DTB) $(SDM670_LC_BOARDS) $(SDM670_LC_BASE_DTB)
+qcs605-overlays-dtb-$(CONFIG_ARCH_SDM670) += $(SDM670_BOARDS) $(SDM670_BASE_DTB)
 dtb-y += $(qcs605-dtb-y)
 
 LEMANS_BASE_DTB		+= lemans.dtb
