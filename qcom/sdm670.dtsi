@@ -12,6 +12,7 @@
 
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include <dt-bindings/clock/qcom,aop-qmp.h>
+#include <dt-bindings/interconnect/qcom,sdm670.h>
 
 #define MHZ_TO_MBPS(mhz, w) ((mhz * 1000000 * w) / (1024 * 1024))
 
@@ -31,8 +32,8 @@
 
 	aliases {
 		ufshc1 = &ufshc_mem; /* Embedded UFS slot */
-		sdhc1 = &sdhc_1; /* SDC1 eMMC slot */
-		sdhc2 = &sdhc_2; /* SDC2 SD Card slot */
+		mmc0 = &sdhc_1; /* SDC1 eMMC slot */
+		mmc1 = &sdhc_2; /* SDC2 SD Card slot */
 		serial0 = &qupv3_se12_2uart;
 		spi0 = &qupv3_se8_spi;
 		i2c0 = &qupv3_se10_i2c;
@@ -2425,165 +2426,139 @@
 
 	};
 
-	sdcc1_ice: sdcc1ice@7c8000 {
-		compatible = "qcom,ice";
-		reg = <0x7c8000 0x8000>;
-		qcom,enable-ice-clk;
-		clock-names = "ice_core_clk_src", "ice_core_clk",
-				"bus_clk", "iface_clk";
-		clocks = <&gcc GCC_SDCC1_ICE_CORE_CLK_SRC>,
-			<&gcc GCC_SDCC1_ICE_CORE_CLK>,
-			<&gcc GCC_SDCC1_APPS_CLK>,
-			<&gcc GCC_SDCC1_AHB_CLK>;
-		qcom,op-freq-hz = <300000000>, <0>, <0>, <0>;
-		qcom,msm-bus,name = "sdcc_ice_noc";
-		qcom,msm-bus,num-cases = <2>;
-		qcom,msm-bus,num-paths = <1>;
-		qcom,msm-bus,vectors-KBps =
-			<150 512 0 0>,    /* No vote */
-			<150 512 1000 0>; /* Max. bandwidth */
-		qcom,bus-vector-names = "MIN",
-					"MAX";
-		qcom,instance-type = "sdcc";
+	sdhc1_opp_table: sdhc1-opp-table {
+		compatible = "operating-points-v2";
+
+		opp-100000000 {
+			opp-hz = /bits/ 64 <100000000>;
+			opp-peak-kBps = <500000 200000>;
+			opp-avg-kBps = <104000 0>;
+		};
+
+		opp-384000000 {
+			opp-hz = /bits/ 64 <384000000>;
+			opp-peak-kBps = <2500000 1000000>;
+			opp-avg-kBps = <400000 0>;
+		};
 	};
+
 
 	sdhc_1: sdhci@7c4000 {
 		compatible = "qcom,sdhci-msm-v5";
 		reg = <0x7C4000 0x1000>, <0x7C5000 0x1000>;
-		reg-names = "hc_mem", "cmdq_mem";
+		reg-names = "hc", "cqhci";
 
-		interrupts = <0 641 IRQ_TYPE_LEVEL_HIGH>,
-				<0 644 IRQ_TYPE_LEVEL_HIGH>;
+		iommus = <&apps_smmu 0x0140 0x0>;
+		qcom,iommu-dma = "fastmap";
+
+		qcom,iommu-dma-addr-pool = <0x40000000 0x10000000>;
+		qcom,iommu-geometry = <0x40000000 0x10000000>;
+
+		interrupts = <GIC_SPI 641 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 644 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-names = "hc_irq", "pwr_irq";
-
-		qcom,bus-width = <8>;
-		qcom,large-address-bus;
-		sdhc-msm-crypto = <&sdcc1_ice>;
-
-		qcom,clk-rates = <400000 20000000 25000000 50000000 100000000
-						192000000 384000000>;
-		qcom,bus-aggr-clk-rates = <50000000 50000000 50000000 50000000
-				100000000 200000000 200000000>;
-		qcom,bus-speed-mode = "HS400_1p8v", "HS200_1p8v", "DDR_1p8v";
-
-		qcom,devfreq,freq-table = <50000000 200000000>;
-
-		qcom,msm-bus,name = "sdhc1";
-		qcom,msm-bus,num-cases = <9>;
-		qcom,msm-bus,num-paths = <2>;
-		qcom,msm-bus,vectors-KBps =
-			/* No vote */
-			<150 512 0 0>, <1 782 0 0>,
-			/* 400 KB/s*/
-			<150 512 1046 1600>,
-			<1 782 1600 1600>,
-			/* 20 MB/s */
-			<150 512 52286 80000>,
-			<1 782 80000 80000>,
-			/* 25 MB/s */
-			<150 512 65360 100000>,
-			<1 782 100000 100000>,
-			/* 50 MB/s */
-			<150 512 130718 200000>,
-			<1 782 100000 100000>,
-			/* 100 MB/s */
-			<150 512 130718 200000>,
-			<1 782 130000 130000>,
-			/* 200 MB/s */
-			<150 512 261438 400000>,
-			<1 782 300000 300000>,
-			/* 400 MB/s */
-			<150 512 261438 400000>,
-			<1 782 300000 300000>,
-			/* Max. bandwidth */
-			<150 512 1338562 4096000>,
-			<1 782 1338562 4096000>;
-		qcom,bus-bw-vectors-bps = <0 400000 20000000 25000000 50000000
-			100000000 200000000 400000000 4294967295>;
-
-		/* PM QoS */
-		qcom,pm-qos-irq-type = "affine_irq";
-		qcom,pm-qos-irq-latency = <67 67>;
-		qcom,pm-qos-cpu-groups = <0x3f 0xc0>;
-		qcom,pm-qos-cmdq-latency-us = <67 67>, <67 67>;
-		qcom,pm-qos-legacy-latency-us = <67 67>, <67 67>;
 
 		clocks = <&gcc GCC_SDCC1_AHB_CLK>,
 			<&gcc GCC_SDCC1_APPS_CLK>,
 			<&gcc GCC_SDCC1_ICE_CORE_CLK>;
-		clock-names = "iface_clk", "core_clk", "ice_core_clk";
+		clock-names = "iface", "core", "ice_core";
 
 		qcom,ice-clk-rates = <300000000 75000000>;
+		interconnects = <&aggre1_noc MASTER_EMMC &mc_virt SLAVE_EBI1>,
+				<&gladiator_noc MASTER_APPSS_PROC &config_noc SLAVE_EMMC_CFG>;
 
-		qcom,ddr-config = <0xC3040873>;
+		interconnect-names = "sdhc-ddr","cpu-sdhc";
+		operating-points-v2 = <&sdhc1_opp_table>;
+		/* DLL HSR settings. Refer go/hsr - <Target> DLL settings */
+		qcom,dll-hsr-list = <0x000F642C 0x0 0x00 0x2C010800 0xc3040873>;
 
-		qcom,nonremovable;
-		nvmem-cells = <&minor_rev>;
-		nvmem-cell-names = "minor_rev";
+		qcom,restore-after-cx-collapse;
+		mmc-ddr-1_8v;
+		mmc-hs200-1_8v;
+		mmc-hs400-1_8v;
+		mmc-hs400-enhanced-strobe;
 
+		no-sd;
+		no-sdio;
+
+		bus-width = <8>;
+		non-removable;
+		supports-cqe;
+
+		cap-mmc-hw-reset;
+		resets = <&gcc GCC_SDCC1_BCR>;
+		reset-names = "core_reset";
 		status = "disabled";
+		qos0 {
+			mask = <0x3f>;
+			vote = <67>;
+		};
+
+		qos1 {
+			mask = <0xc0>;
+			vote = <67>;
+		};
+
+	};
+
+	sdhc2_opp_table: sdhc2-opp-table {
+		compatible = "operating-points-v2";
+
+		opp-100000000 {
+			opp-hz = /bits/ 64 <100000000>;
+			opp-peak-kBps = <250000 133320>;
+			opp-avg-kBps = <50000 0>;
+		};
+
+		opp-202000000 {
+			opp-hz = /bits/ 64 <202000000>;
+			opp-peak-kBps = <800000 300000>;
+			opp-avg-kBps = <104000 0>;
+		};
 	};
 
 	sdhc_2: sdhci@8804000 {
 		compatible = "qcom,sdhci-msm-v5";
 		reg = <0x8804000 0x1000>;
-		reg-names = "hc_mem";
+		reg-names = "hc";
 
 		interrupts = <0 204 IRQ_TYPE_LEVEL_HIGH>,
 				<0 222 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-names = "hc_irq", "pwr_irq";
 
-		qcom,bus-width = <4>;
-		qcom,large-address-bus;
+		bus-width = <4>;
+		no-sdio;
+
+		no-mmc;
+		qcom,restore-after-cx-collapse;
+
+		iommus = <&apps_smmu 0x00A0 0x0>;
+		qcom,iommu-dma = "fastmap";
+		qcom,iommu-dma-addr-pool = <0x40000000 0x10000000>;
+		qcom,iommu-geometry = <0x40000000 0x10000000>;
 
 		qcom,clk-rates = <400000 20000000 25000000
 					50000000 100000000 201500000>;
 		qcom,bus-speed-mode = "SDR12", "SDR25", "SDR50", "DDR50",
 				      "SDR104";
 
-		qcom,devfreq,freq-table = <50000000 201500000>;
+		interconnects = <&aggre1_noc MASTER_SDCC_2 &mc_virt SLAVE_EBI1>,
+				<&gladiator_noc MASTER_APPSS_PROC &config_noc SLAVE_SDCC_2>;
+		interconnect-names = "sdhc-ddr","cpu-sdhc";
+		operating-points-v2 = <&sdhc2_opp_table>;
 
-		qcom,msm-bus,name = "sdhc2";
-		qcom,msm-bus,num-cases = <8>;
-		qcom,msm-bus,num-paths = <2>;
-		qcom,msm-bus,vectors-KBps =
-			/* No vote */
-			<81 512 0 0>, <1 608 0 0>,
-			/* 400 KB/s*/
-			<81 512 1046 1600>,
-			<1 608 1600 1600>,
-			/* 20 MB/s */
-			<81 512 52286 80000>,
-			<1 608 80000 80000>,
-			/* 25 MB/s */
-			<81 512 65360 100000>,
-			<1 608 100000 100000>,
-			/* 50 MB/s */
-			<81 512 130718 200000>,
-			<1 608 100000 100000>,
-			/* 100 MB/s */
-			<81 512 261438 200000>,
-			<1 608 130000 130000>,
-			/* 200 MB/s */
-			<81 512 261438 400000>,
-			<1 608 300000 300000>,
-			/* Max. bandwidth */
-			<81 512 1338562 4096000>,
-			<1 608 1338562 4096000>;
-		qcom,bus-bw-vectors-bps = <0 400000 20000000 25000000 50000000
-			100000000 200000000 4294967295>;
-
-		/* PM QoS */
-		qcom,pm-qos-irq-type = "affine_irq";
-		qcom,pm-qos-irq-latency = <67 67>;
-		qcom,pm-qos-cpu-groups = <0x3f 0xc0>;
-		qcom,pm-qos-legacy-latency-us = <67 67>, <67 67>;
+		/* DLL HSR settings. Refer go/hsr - <Target> DLL settings */
+		qcom,dll-hsr-list = <0x000F642E 0xA001 0x02 0xC1400000 0x80040868>;
 
 		clocks = <&gcc GCC_SDCC2_AHB_CLK>,
 			<&gcc GCC_SDCC2_APPS_CLK>;
-		clock-names = "iface_clk", "core_clk";
+		clock-names = "iface", "core";
 
 		status = "disabled";
+		qos0 {
+			mask = <0x3f>;
+			vote = <67>;
+		};
 	};
 
 	qcom,msm-cdsp-loader {
