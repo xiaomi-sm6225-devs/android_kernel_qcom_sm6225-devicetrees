@@ -633,7 +633,9 @@
 			qcom,init-voltage = <3312000>;
 		};
 	};
+};
 
+&soc {
 	refgen: refgen-regulator@ff1000 {
 		compatible = "qcom,refgen-regulator";
 		reg = <0xff1000 0x60>;

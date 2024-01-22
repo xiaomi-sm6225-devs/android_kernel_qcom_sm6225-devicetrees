@@ -3680,4 +3680,19 @@
 			drive-strength = <2>;
 		};
 	};
+
+	qps615_intn_wol {
+		qca_intn_wol_sig: qca_intn_wol_sig {
+			mux {
+				pins = "gpio177";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio177";
+				input-enable;
+				bias-disable;
+			};
+		};
+	};
 };
