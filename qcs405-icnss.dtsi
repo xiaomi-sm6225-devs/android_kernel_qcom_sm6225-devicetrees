@@ -26,7 +26,7 @@
 			   <0 287 0 /* CE10 */ >,
 			   <0 288 0 /* CE11 */ >;
 		qcom,wlan-msa-memory = <0x100000>;
-		qcom,iommu-dma = "fastmap";
+		qcom,iommu-dma = "bypass";
 		qcom,iommu-faults = "stall-disable", "HUPCF", "non-fatal";
 		qcom,iommu-geometry = <0xa0000000 0x10010000>;
 		qcom,iommu-dma-addr-pool = <0xa0000000 0x10000000>;

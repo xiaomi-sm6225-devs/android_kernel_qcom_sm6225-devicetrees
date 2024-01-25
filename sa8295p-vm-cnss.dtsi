@@ -74,9 +74,6 @@
 		pinctrl-2 = <&cnss_wlan_en_sleep>;
 
 		chip_cfg@0 {
-			reg = <0xb0000000 0x10000>;
-			reg-names = "smmu_iova_ipa";
-
 			supported-ids = <0x003e>;
 			wlan_vregs = "vdd-wlan";
 			qcom,vdd-wlan-config = <0 0 0 10 1>;
@@ -85,31 +82,25 @@
 		};
 
 		chip_cfg@1 {
-			reg = <0xb0000000 0x10000>;
-			reg-names = "smmu_iova_ipa";
 			qcom,qrtr_node_id = <0x10>;
 			supported-ids = <0x1101>;
 			wlan_vregs;
 			qcom,sleep-clk-support;
+
 			qcom,wlan-ramdump-dynamic = <0x400000>;
 		};
 
 		chip_cfg@2 {
 			supported-ids = <0x1102>;
-			wlan_vregs = "vdd-wlan-vl", "vdd-wlan-vm",
-				   "vdd-wlan-vh";
-			qcom,vdd-wlan-vl-config = <1055000 1055000 0 0 0>;
-			qcom,vdd-wlan-vm-config = <1350000 1350000 450000 0 0>;
-			qcom,vdd-wlan-vh-config = <1900000 1900000 450000 0 0>;
+			wlan_vregs;
 
 			qcom,wlan-ramdump-dynamic = <0x400000>;
 		};
 		chip_cfg@3 {
-			reg = <0xb0000000 0x10000>;
-			reg-names = "smmu_iova_ipa";
 			supported-ids = <0x1103>;
 			wlan_vregs;
 			qcom,no-bwscale;
+
 			qcom,wlan-ramdump-dynamic = <0x420000>;
 		};
 	};
@@ -123,6 +114,8 @@
 		qcom,bus-type=<0>;
 		qcom,notify-modem-status;
 
+		reg = <0xd0000000 0x10000>;
+		reg-names = "smmu_iova_ipa";
 		#address-cells=<1>;
 		#size-cells=<1>;
 		ranges = <0xd0000000 0xd0000000 0x10000>;
@@ -150,9 +143,6 @@
 		pinctrl-2 = <&cnss_wlan_en_sleep2>;
 
 		chip_cfg@0 {
-			reg = <0xd0000000 0x10000>;
-			reg-names = "smmu_iova_ipa";
-
 			supported-ids = <0x003e>;
 			wlan_vregs = "vdd-wlan";
 			qcom,vdd-wlan-config = <0 0 0 10 1>;
@@ -161,32 +151,26 @@
 		};
 
 		chip_cfg@1 {
-			reg = <0xd0000000 0x10000>;
-			reg-names = "smmu_iova_ipa";
 			qcom,qrtr_node_id = <0x20>;
 			supported-ids = <0x1101>;
 			wlan_vregs;
 			qcom,sleep-clk-support;
+
 			qcom,wlan-ramdump-dynamic = <0x400000>;
 		};
 
 		chip_cfg@2 {
 			supported-ids = <0x1102>;
-			wlan_vregs = "vdd-wlan-vl", "vdd-wlan-vm",
-				   "vdd-wlan-vh";
-			qcom,vdd-wlan-vl-config = <1055000 1055000 0 0 0>;
-			qcom,vdd-wlan-vm-config = <1350000 1350000 450000 0 0>;
-			qcom,vdd-wlan-vh-config = <1900000 1900000 450000 0 0>;
+			wlan_vregs;
 
 			qcom,wlan-ramdump-dynamic = <0x400000>;
 		};
 
 		chip_cfg@3 {
-			reg = <0xb0000000 0x10000>;
-			reg-names = "smmu_iova_ipa";
 			supported-ids = <0x1103>;
 			wlan_vregs;
 			qcom,no-bwscale;
+
 			qcom,wlan-ramdump-dynamic = <0x420000>;
 		};
 	};
