@@ -28,7 +28,7 @@
 };
 
 &mdss_mdp {
-	connectors = <&sde_dsi &sde_wb>;
+	connectors = <&sde_dsi &sde_wb &smmu_sde_sec &smmu_sde_unsec>;
 };
 
 &qupv3_se2_i2c {
